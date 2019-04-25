@@ -3,16 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {HomeComponent} from './components/home/home.component'
 import { ClienteComponent } from './components/cliente/cliente.component';
+import {ModuleWithProviders} from "@angular/core";
 
 const routes: Routes = [
 {path: 'home',component: HomeComponent},
 {path: 'cliente',component: ClienteComponent},
-{path: '**',pathMatch: 'full', redirectTo: 'home'}
+{path: '',pathMatch: 'full', redirectTo: 'home'}
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-
-export class AppRoutingModule { }
+export const AppRoutingModule:any[]=[];
+export const routing:ModuleWithProviders =RouterModule.forRoot(routes);

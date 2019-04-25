@@ -1,1 +1,12 @@
-<app-cliente></app-cliente>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Usuarios</span>
+      <span class="example-spacer"></span>
+      <mat-icon 
+            class="example-icon" 
+            [routerLink]="['home']"
+            aria-hidden="false">home</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -7,7 +7,7 @@ import { FirebaseService } from '../../services/firebase.service';
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+  styleUrls: ['./cliente.component.scss']
 })
 export class ClienteComponent implements OnInit {
 
@@ -15,13 +15,16 @@ export class ClienteComponent implements OnInit {
 
   validation_messages = {
     'name': [
-      { type: 'required', message: 'Name is required.' }
+      { type: 'required', message: 'Nombre es obligatorio.' }
     ],
     'surname': [
-      { type: 'required', message: 'Surname is required.' }
+      { type: 'required', message: 'Apellidos es obligatorio.' }
     ],
     'age': [
-      { type: 'required', message: 'Age is required.' },
+      { type: 'required', message: 'Edad es obligatoria.' },
+    ],
+    'dateBirth': [
+      { type: 'required', message: 'Fecha es obligatorio.' },
     ]
   };
 
@@ -40,7 +43,8 @@ export class ClienteComponent implements OnInit {
     this.exampleForm = this.formBuilder.group({
       name: ['', Validators.required ],
       surname: ['', Validators.required ],
-      age: ['', Validators.required ]
+      age: ['', Validators.required ],
+      dateBirth:['', Validators.required ]
     });
   };
 
@@ -49,6 +53,7 @@ export class ClienteComponent implements OnInit {
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
       age: new FormControl('', Validators.required),
+      dateBirth: new FormControl('', Validators.required),
     });
   };
 

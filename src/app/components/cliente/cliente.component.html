@@ -1,7 +1,7 @@
 <div class="create-page">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">Create User</li>
+      <li class="breadcrumb-item active" aria-current="page">Crear Usuario</li>
     </ol>
   </nav>
   <div class="page-content">
@@ -12,10 +12,9 @@
       <div class="col col-md-8">
 
         <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
-
           <div class="form-group">
             <mat-form-field class="input-style">
-              <input matInput placeholder="Name" class="form-control" formControlName="name">
+              <input matInput placeholder="Nombres" class="form-control" formControlName="name">
             </mat-form-field>
             <ng-container *ngFor="let validation of validation_messages.name">
               <mat-error *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">{{validation.message}}</mat-error>
@@ -24,7 +23,7 @@
 
           <div class="form-group">
             <mat-form-field class="input-style">
-              <input matInput placeholder="Surname" class="form-control" formControlName="surname">
+              <input matInput placeholder="Apellidos" class="form-control" formControlName="surname">
             </mat-form-field>
             <ng-container *ngFor="let validation of validation_messages.surname">
               <mat-error *ngIf="exampleForm.get('surname').hasError(validation.type) && (exampleForm.get('surname').dirty || exampleForm.get('surname').touched)">{{validation.message}}</mat-error>
@@ -33,10 +32,19 @@
 
           <div class="form-group">
             <mat-form-field class="input-style">
-              <input matInput type="number" min="0" max="100" placeholder="Age" class="form-control" formControlName="age">
+              <input matInput type="number" min="0" max="100" placeholder="Edad" class="form-control" formControlName="age">
             </mat-form-field>
             <ng-container *ngFor="let validation of validation_messages.age">
               <mat-error *ngIf="exampleForm.get('age').hasError(validation.type) && (exampleForm.get('age').dirty || exampleForm.get('age').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput type="date" placeholder="Fecha Nacimiento" class="form-control" formControlName="dateBirth">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validation_messages.dateBirth">
+              <mat-error *ngIf="exampleForm.get('dateBirth').hasError(validation.type) && (exampleForm.get('dateBirth').dirty || exampleForm.get('dateBirth').touched)">{{validation.message}}</mat-error>
             </ng-container>
           </div>
 

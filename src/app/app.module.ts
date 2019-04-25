@@ -1,18 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 
-//servicios
-import { FirebaseService}  from './services/firebase.service';
-
-//FireBase
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule,FirestoreSettingsToken  } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { FirebaseService } from './services/firebase.service';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatInputModule, MatSliderModule, MatDialogModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,22 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
- 	  AngularFirestoreModule,
+    ReactiveFormsModule,
+    // RouterModule.forRoot(AppRoutingModule, { useHash: false }),
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSliderModule,
+    MatDialogModule
   ],
   providers: [
-    FirebaseService
+    FirebaseService,
+    [{ provide: FirestoreSettingsToken, useValue: {} }],
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

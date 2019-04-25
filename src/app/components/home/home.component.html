@@ -4,8 +4,12 @@
 			<!-- <div class="col col-md-2 image-col">
 				<img class="image" [src]="item.payload.doc.data().avatar">
 			</div> -->
+			
 			<div class="col col-md-8 text-col">
-				<h5 class="mb-1>{{item.payload.doc.data().name}} {{item.payload.doc.data().surname}}/>
+				<div class="mb-1">
+					{{item.payload.doc.data().name}} 
+					{{item.payload.doc.data().surname}}
+				</div>
 				<small>Age: {{item.payload.doc.data().age}}</small>
 			</div>
 		</div>

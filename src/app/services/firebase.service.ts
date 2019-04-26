@@ -49,7 +49,7 @@ export class FirebaseService {
       this.varianza = Math.pow(parseInt(element.payload.doc.data().Edad) - (promed),2) + this.varianza;
     });
     this.total_varianza =  this.varianza / (array.length - 1);
-    this.desviacion     =   Math.sqrt(this.total_varianza);
+    this.desviacion     =   Math.round(Math.sqrt(this.total_varianza) * 1000) / 1000;
     return this.desviacion;
   }
 }

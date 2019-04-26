@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule,routing } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -99,12 +100,13 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    HttpClientModule
   ],
   providers: [
     FirebaseService,
     AppRoutingModule,
-    [{ provide: FirestoreSettingsToken, useValue: {} }],
+    [{ provide: FirestoreSettingsToken, useValue: {}}]
   ],
   bootstrap: [AppComponent],
   schemas: [

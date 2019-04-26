@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { Router,Params } from '@angular/router';
-import 'rxjs/Rx';
+// import 'rxjs/Rx';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.firebaseService.getUsers()
     .then(result => {
       this.items = result;
+      console.log(this.items);
     })
   }
 

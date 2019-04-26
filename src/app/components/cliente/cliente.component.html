@@ -41,7 +41,10 @@
 
           <div class="form-group">
             <mat-form-field class="input-style">
-              <input matInput type="date" placeholder="Fecha Nacimiento" class="form-control" formControlName="dateBirth">
+              <!-- <input matInput type="date" placeholder="Fecha Nacimiento" class="form-control" formControlName="dateBirth"> -->
+              <input matInput [matDatepicker]="picker" placeholder="Fecha Nacimiento" formControlName="dateBirth">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <ng-container *ngFor="let validation of validation_messages.dateBirth">
               <mat-error *ngIf="exampleForm.get('dateBirth').hasError(validation.type) && (exampleForm.get('dateBirth').dirty || exampleForm.get('dateBirth').touched)">{{validation.message}}</mat-error>

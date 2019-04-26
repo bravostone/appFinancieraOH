@@ -7,6 +7,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 
 export class FirebaseService {
+  
+  desviacion : any;
+  promedio: any;
+  sumaEdades: number = 0;
+  varianza: number = 0;
+  total_varianza: number = 0;
+  
 
   constructor(public db: AngularFirestore) { }
 
@@ -27,5 +34,22 @@ export class FirebaseService {
         resolve(snapshots)
       })
     })
+  }
+
+  calcularPromedio(array){
+    array.forEach(element => {
+      this.sumaEdades = parseInt(element.payload.doc.data().Edad) + this.sumaEdades;
+    });
+    this.promedio = (this.sumaEdades / array.length);
+    return this.promedio;
+  }
+
+  calcularDesviacion(array, promed){
+    array.forEach(element => {
+      this.varianza = Math.pow(parseInt(element.payload.doc.data().Edad) - (promed),2) + this.varianza;
+    });
+    this.total_varianza =  this.varianza / (array.length - 1);
+    this.desviacion     =   Math.sqrt(this.total_varianza);
+    return this.desviacion;
   }
 }

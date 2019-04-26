@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
-import { Router,Params } from '@angular/router';
-// import 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +10,9 @@ import { Router,Params } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   items: Array<any>;
+  promedio: any;
+  desviacion: any;
+
   constructor(
     public firebaseService: FirebaseService,
     private router: Router
@@ -24,8 +26,14 @@ export class HomeComponent implements OnInit {
     this.firebaseService.getUsers()
     .then(result => {
       this.items = result;
-      console.log(this.items);
+      this.getCalculos(this.items);
     })
   }
 
+  getCalculos(array){
+    this.promedio = this.firebaseService.calcularPromedio(array);
+    console.log("Promedio:" + this.promedio);
+    this.desviacion = this.firebaseService.calcularDesviacion(array,this.promedio);
+    console.log("Desviacion:" + this.desviacion);
+  }
 }

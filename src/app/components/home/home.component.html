@@ -9,7 +9,17 @@
 			aria-hidden="false">person_add
 		</mat-icon>
 	</div>
- </div>			
+ </div>	
+ <div class="row">
+		<div class="col col-md-1 text-col">
+		</div>
+		<div class="col col-md-5 text-col">
+			<strong>Promedio de Edad : {{ promedio}}</strong>
+		</div>
+		<div class="col col-md-6 text-col">
+				<strong>Desviación Estandar: {{ desviacion}}</strong>
+		</div>
+ </div>
 <div class="list-group users-list">
 	<div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
 		<div class="row">
@@ -18,8 +28,9 @@
 					{{item.payload.doc.data().Nombre}} 
 					{{item.payload.doc.data().Apellido}}
 				</div>
-				<small>Edad: {{item.payload.doc.data().Edad}}</small><br>
-				<small>Fecha Nacimiento: {{item.payload.doc.data().FechaNacimiento.toDate() | date: 'dd/MM/yyyy'}}</small>
+				<small>Edad: {{item.payload.doc.data().Edad}} año(s)</small><br>
+				<small>Fecha Nacimiento: {{item.payload.doc.data().FechaNacimiento.toDate() | date: 'dd/MM/yyyy'}}</small><br>
+				<small>Fecha Probale de Muerte: {{item.payload.doc.data().FechaNacimiento.toDate() | date: 'dd/MM/yyyy'}}</small>
 			</div>
 		</div>
 	</div>
